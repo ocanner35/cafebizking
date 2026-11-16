@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Manrope:wght@500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --surface:#07130d;
+  --surface-2:#0d2a1b;
+  --felt:#0B5D3B;
+  --felt-2:#052E1D;
+  --gold:#e9b949;
+  --gold-2:#fff0a8;
+  --cream:#FFFFFF;
+  --ink:#0F172A;
+  --muted:#334155;
+  --red:#E11D48;
+  --line:rgba(15,23,42,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --surface:#050e08; --surface-2:#0a2517; }
+}
+*{ box-sizing:border-box; }
+html,body,#root{ min-height:100%; }
+body{ margin:0; background:var(--surface); color:#FFFFFF; font-family:'Manrope',system-ui,sans-serif; }
+.font-display{ font-family:'Fraunces',Georgia,serif; }
+.felt{
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255,255,255,.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, #0B5D3B 0%, #084A2F 55%, #052E1D 100%);
+  box-shadow: inset 0 0 0 10px #5b3315, inset 0 0 0 14px #8a5322, inset 0 0 90px rgba(0,0,0,.55), 0 18px 50px rgba(0,0,0,.45);
+}
+/* PREMIUM PLAYING CARD — ivory paper, linen texture, gold inner frame */
+.card-face{
+  background-color:#FDFBF7;
+  background-image:
+    radial-gradient(rgba(120,100,60,.07) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px),
+    repeating-linear-gradient(0deg, rgba(120,100,60,.025) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(120,100,60,.025) 0 1px, transparent 1px 3px);
+  background-size:5px 5px, 7px 7px, 100% 100%, 100% 100%;
+  color:#0F172A;
+  border:1.5px solid #B9AE97;
+  border-radius:10px;
+  box-shadow:0 10px 22px rgba(0,0,0,.34), 0 2px 5px rgba(0,0,0,.22), inset 0 0 0 1px rgba(212,175,55,.55), inset 0 1px 0 rgba(255,255,255,.9);
+  overflow:hidden;
+}
+.card-red{ color:#D61F3F; }
+.card-black{ color:#111111; }
+.card-rank{ font-family:'Fraunces',Georgia,serif; text-shadow:0 1px 0 rgba(255,255,255,.9), 0 1px 1px rgba(0,0,0,.18); letter-spacing:-.02em; }
+.card-corner-suit{ line-height:1; }
+/* Vector-style suit glyphs: gradient + inner highlight for depth */
+.suit-glyph{ display:inline-block; line-height:1; -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 1px 0 rgba(255,255,255,.75)) drop-shadow(0 1px 1px rgba(0,0,0,.28)); }
+.suit-glyph-red{ background-image:linear-gradient(180deg,#FF5A76 0%, #E11D48 38%, #B80F35 62%, #7F0A24 100%); }
+.suit-glyph-black{ background-image:linear-gradient(180deg,#4A4A4A 0%, #171717 45%, #000000 100%); }
+.suit-gloss{ position:relative; }
+.suit-gloss::after{ content:""; position:absolute; top:8%; left:18%; width:26%; height:18%; border-radius:50%; background:radial-gradient(ellipse at center, rgba(255,255,255,.95), rgba(255,255,255,0) 70%); transform:rotate(-24deg); pointer-events:none; }
+.face-medallion{ background:radial-gradient(circle at 50% 32%, #FFFEF6 0%, #FFF7D6 42%, #F6DE8F 78%, #E7C55A 100%); border:1px solid rgba(180,140,30,.75); box-shadow:inset 0 1px 0 rgba(255,255,255,.9), inset 0 -2px 5px rgba(150,110,20,.28), 0 1px 2px rgba(0,0,0,.12); }
+.face-ribbon{ box-shadow:0 1px 0 rgba(255,255,255,.7), 0 1px 2px rgba(0,0,0,.28); border:1px solid rgba(0,0,0,.18); }
+/* Premium card back — deep navy guilloche + diamond lattice + gold frame */
+.card-back{
+  background-color:#12265A;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.09) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.09) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(0deg, rgba(233,185,73,.14) 0 1px, transparent 1px 9px),
+    radial-gradient(circle at 50% 50%, rgba(233,185,73,.22) 0%, rgba(233,185,73,0) 58%),
+    radial-gradient(circle at 50% 50%, #1E3A8A 0%, #0B1B44 78%);
+  border:1.5px solid #E9B949;
+  border-radius:10px;
+  box-shadow:0 10px 22px rgba(0,0,0,.36), 0 2px 5px rgba(0,0,0,.22), inset 0 0 0 2px #12265A, inset 0 0 0 3px rgba(233,185,73,.95), inset 0 0 0 6px rgba(255,255,255,.14);
+  color:#FBBF24;
+}
+.card-back-emblem{ text-shadow:0 1px 0 rgba(255,255,255,.55), 0 2px 3px rgba(0,0,0,.6); filter:drop-shadow(0 1px 1px rgba(0,0,0,.5)); }
+/* PREMIUM TOP-LEFT BANNER — dark glass, gold hairline, gloss */
+.banner-glass{
+  background:linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.28) 100%), rgba(8,18,12,.74);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(233,185,73,.68);
+  box-shadow:0 10px 24px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.38), inset 0 0 0 1px rgba(0,0,0,.25);
+}
+.banner-shine{ position:absolute; top:0; left:10%; right:10%; height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.9), transparent); pointer-events:none; }
+.banner-gloss{ position:absolute; top:2px; left:6%; right:6%; height:38%; border-radius:999px; background:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0)); pointer-events:none; }
+/* ORANGE PLASTIC 3D EMBOSSED — brighter gradient, crisper highlight, deeper shadow */
+.plastic-orange{
+  background-image:linear-gradient(180deg,#FFF3B0 0%, #FFC93C 18%, #FF8A00 46%, #F26400 62%, #9A3400 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.85)) drop-shadow(0 2px 0 rgba(194,65,12,.9)) drop-shadow(0 3px 0 rgba(124,45,18,.95)) drop-shadow(0 5px 7px rgba(0,0,0,.55));
+}
+.playable{ cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; }
+.playable:hover{ transform:translateY(-10px) rotate(0deg) !important; box-shadow:0 16px 26px rgba(0,0,0,.45), 0 2px 4px rgba(0,0,0,.18); z-index:60; }
+.disabled-card{ opacity:.6; cursor:not-allowed; }
+.disabled-card::after{ content:""; position:absolute; inset:0; border-radius:10px; background:rgba(156,163,175,.38); pointer-events:none; }
+.no-scrollbar::-webkit-scrollbar{ display:none; }
+.no-scrollbar{ scrollbar-width:none; }
+.chair{ background:linear-gradient(180deg,#FFF7E0,#F3D9A4); border:1.5px solid #8a5322; box-shadow:0 4px 8px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.9); color:#3B2500; }
+.chair-empty{ background:linear-gradient(180deg,#FFFFFF,#E8E0C8); border-style:dashed; }
+.chair-mine{ background:linear-gradient(180deg,#FFF3C4,#F5C94A); }
+@keyframes pop{ from{ transform:translateY(8px) scale(.96); opacity:0 } to{ transform:none; opacity:1 } }
+.pop{ animation:pop .15s ease both; }
+@keyframes deal{ from{ transform:translateY(-14px) rotate(-3deg); opacity:0 } to{ transform:none; opacity:1 } }
+.deal{ animation:deal var(--card-play-ms,600ms) ease both; }
+@keyframes collectFly{ 0%{ transform:translate(0,0) scale(1); opacity:1 } 100%{ transform:translate(var(--dx,0px), var(--dy,0px)) scale(.35); opacity:0 } }
+.collect-fly{ animation:collectFly var(--collect-ms,900ms) ease-in forwards; }
+@keyframes playUp{ from{ transform:translateY(28px) scale(.92); opacity:.4 } to{ transform:translateY(0) scale(1); opacity:1 } }
+.play-up{ animation:playUp var(--card-play-ms,600ms) ease both; }
+.last-played{ box-shadow:0 0 0 3px var(--gold), 0 0 18px 4px rgba(233,185,73,.85); border-radius:10px; }
+@keyframes mustPlayPulse{ 0%,100%{ box-shadow:0 0 0 3px var(--gold), 0 0 12px 3px rgba(233,185,73,.75); } 50%{ box-shadow:0 0 0 4px var(--gold), 0 0 26px 9px rgba(233,185,73,.95); } }
+.must-play{ animation:mustPlayPulse 1s ease-in-out infinite; border-radius:10px; }
+.must-play-label{ position:absolute; top:-22px; left:50%; transform:translateX(-50%); white-space:nowrap; background:var(--gold); color:#000; font-size:9px; font-weight:900; padding:2px 6px; border-radius:999px; box-shadow:0 2px 6px rgba(0,0,0,.4); z-index:40; pointer-events:none; }
+
+/* ---- REDESIGNED TABLE: BIG CARDS, FIT-TO-VIEWPORT ----
+   Masa: tam ekran keçe, üstte ince başlık, altta görev çubuğunun
+   üstünde kalan el. Kartlar varsayılan olarak büyük; yalnızca
+   görünüm yüksekliği 650px'in altına inerse küçülür. */
+.game-table{ flex:1 1 auto; min-height:0; max-height:100%; overflow:hidden; display:flex; flex-direction:column; }
+.game-hand{ flex-shrink:0; padding-bottom:14px !important; }
+/* SHARED CARD SIZE — hand cards AND center played cards use the SAME
+   .hand-card class, so they are exactly the same width/height/font at
+   every breakpoint. Hand cards are NOT shrunk; center cards are NOT
+   enlarged. Slight overlap only in the hand row (-10px) keeps every
+   rank/suit fully readable at a glance. */
+.hand-card{ width:70px !important; height:100px !important; }
+.hand-card .card-rank{ font-size:19px; }
+.hand-card .card-corner-suit{ font-size:13px; }
+.hand-card .suit-glyph{ font-size:32px; }
+@media (min-width:640px){
+  .hand-card{ width:94px !important; height:134px !important; }
+  .hand-card .card-rank{ font-size:22px; }
+  .hand-card .card-corner-suit{ font-size:14px; }
+  .hand-card .suit-glyph{ font-size:42px; }
+}
+/* Center played cards keep the same card-face shadow as hand cards. */
+.game-table .deal .card-face,
+.game-table .play-up .card-face{ box-shadow:0 12px 26px rgba(0,0,0,.38), 0 2px 6px rgba(0,0,0,.22), inset 0 0 0 1px rgba(212,175,55,.55), inset 0 1px 0 rgba(255,255,255,.9); }
+/* Hand fit: 13 cards must fit the viewport width. Overlap grows on
+   narrower screens so the row never clips — the left corner
+   (rank + suit) of every card stays fully visible. */
+.game-hand button{ margin-left:-10px !important; }
+.game-hand button:first-child{ margin-left:0 !important; }
+@media (max-width:639px){
+  .game-hand button{ margin-left:-30px !important; }
+  .hand-card{ width:62px !important; height:88px !important; }
+  .hand-card .card-rank{ font-size:17px; }
+  .hand-card .suit-glyph{ font-size:28px; }
+}
+@media (min-width:640px) and (max-width:899px){
+  .game-hand button{ margin-left:-26px !important; }
+}
+/* Short viewport only (< 650px): scale down so nothing scrolls. */
+@media (max-height:649px){
+  .game-hand{ padding-bottom:10px !important; }
+  .hand-card{ width:52px !important; height:74px !important; }
+  .hand-card .card-rank{ font-size:15px; }
+  .hand-card .suit-glyph{ font-size:24px; }
+}
+@media (min-width:640px) and (max-height:649px){
+  .hand-card{ width:64px !important; height:90px !important; }
+  .hand-card .card-rank{ font-size:17px; }
+  .hand-card .suit-glyph{ font-size:30px; }
+}
+@media (max-height:520px){
+  .hand-card{ width:46px !important; height:64px !important; }
+}
+
+/* ---- TAKEN / PENALTY PILE — HALF-SIZE FACE-UP CARDS ----
+   Normal card 70x100 (94x134 on sm+) -> taken card 35x50 (47x67).
+   Cards overlap by exactly 50% so the top-left corner (rank + suit)
+   of every card stays visible; nothing is ever fully hidden.
+   Row piles wrap to a second row, column piles wrap to a second column. */
+.taken-pile{ flex-shrink:0; max-width:100%; }
+.taken-pile-label{ display:inline-block; background:rgba(0,0,0,.62); color:#FFE9A8; font-size:9px; font-weight:900; line-height:1; padding:3px 6px; border-radius:999px; border:1px solid rgba(233,185,73,.55); white-space:nowrap; margin-bottom:2px; }
+.taken-card{ width:35px !important; height:50px !important; border-radius:6px !important; border-width:1px !important; }
+.taken-card .card-rank{ font-size:11px; }
+.taken-card .card-corner-suit{ font-size:8px; }
+.taken-card .suit-glyph{ font-size:18px; }
+.taken-card .face-ribbon{ display:none; }
+.taken-pile-row .taken-card-wrap + .taken-card-wrap{ margin-left:-18px; }
+.taken-pile-col .taken-card-wrap + .taken-card-wrap{ margin-top:-26px; }
+@media (min-width:640px){
+  .taken-card{ width:47px !important; height:67px !important; }
+  .taken-card .card-rank{ font-size:13px; }
+  .taken-card .card-corner-suit{ font-size:9px; }
+  .taken-card .suit-glyph{ font-size:22px; }
+  .taken-pile-row .taken-card-wrap + .taken-card-wrap{ margin-left:-24px; }
+  .taken-pile-col .taken-card-wrap + .taken-card-wrap{ margin-top:-34px; }
+}
+
+/* ---- YIĞIN — KAPALI (KOZ / EL ALMAZ) + AÇIK (DİĞER CEZALAR) ----
+   Kapalı yığında kazanılan her EL = tam olarak BİR kapalı kart.
+   Kartlar %50 yatay bindirmeli dizilir (1. el x=0, 2. el x=%50…),
+   böylece el sayısı görünen kapalı kartlar sayılarak bulunur;
+   tüm eller aynı x'te üst üste ASLA bindirilmez. Sayı etiketi ve
+   "kapalı" yazısı yoktur.
+   Açık ceza yığınlarında her kart yarım boy, %50 bindirmeli, açık. */
+.taken-card.card-back{ border-radius:6px !important; }
